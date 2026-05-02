@@ -1,0 +1,73 @@
+# Dependencies & Environment Notes
+# ===================================
+# This file documents everything that is environment-specific and
+# will need updating if you run this project in a different setting.
+
+
+# --- ESP32 Firmware (esp_pir/main/main.c) ---
+
+WIFI_SSID / WIFI_PASS
+  - Currently set to phone hotspot credentials
+  - Change to whatever network you're running on
+
+MQTT_BROKER_IP
+  - Currently set to the PC's local IP on the hotspot (e.g. 172.20.10.x)
+  - Find your PC's IP with: ipconfig (Windows) → look for hotspot adapter
+  - Must be on the same network as the ESP32
+  - If moving to VPS: replace with the VPS public IP
+
+MQTT credentials (username: esp32, password: esp32)
+  - Hardcoded in firmware
+  - Must match what's set in mosquitto/config/pwfile
+
+
+# --- Python Webserver (webserver/mqtt_client.py) ---
+
+MQTT_BROKER
+  - Currently set to "mosquitto" (Docker service name)
+  - This works when running inside Docker (both containers on same network)
+  - If running locally without Docker: change to PC's local IP (e.g. 172.20.10.x)
+  - If moving to VPS: keep as "mosquitto" — Docker networking stays the same
+
+MQTT_USER / MQTT_PASS
+  - Currently "esp32" / "esp32"
+  - Must match mosquitto/config/pwfile
+
+
+# --- Mosquitto (mosquitto/config/mosquitto.conf + pwfile) ---
+
+pwfile
+  - Contains hashed credentials for the esp32 user
+  - Not pushed to GitHub (see .gitignore)
+  - Teammates need to generate their own using:
+      docker exec -it mosquitto mosquitto_passwd -c /mosquitto/config/pwfile esp32
+  - Then restart the container
+
+listener port (1883)
+  - Fine for local and VPS use
+  - If adding TLS later: switch to port 8883
+
+
+# --- Docker ---
+
+All services start with:
+  docker compose up --build    (first time or after code changes)
+  docker compose up            (subsequent runs)
+
+Run from the project root (where docker-compose.yml lives).
+
+Dashboard accessible at:
+  - Local:   http://localhost:5000
+  - Network: http://<your-PC-local-IP>:5000  (same hotspot/network)
+  - VPS:     http://<vps-public-ip>:5000      (after deploying there)
+
+
+# --- Moving to VPS ---
+
+1. Install Docker on the VPS
+2. Copy the project folder (or git clone)
+3. Recreate pwfile on the VPS (see Mosquitto section above)
+4. Run: docker compose up --build
+5. Update ESP32 firmware MQTT_BROKER_IP to the VPS public IP
+6. Flash the updated firmware
+7. Dashboard is now publicly accessible

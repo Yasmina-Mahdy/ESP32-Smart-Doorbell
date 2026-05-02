@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Security Dashboard</title>
+    <meta http-equiv="refresh" content="5">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <div class="logo-icon">🛡</div>
+            <div>
+                <h1>SecureWatch</h1>
+                <div class="subtitle">ESP32 SECURITY SYSTEM</div>
+            </div>
+        </div>
+        <div class="status">
+            <div class="dot"></div>
+            LIVE MONITORING
+        </div>
+    </header>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-label">Total Events</div>
+            <div class="stat-value">{{ rows|length }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">PIR Triggers</div>
+            <div class="stat-value">{{ rows|selectattr(1, 'equalto', 'pir')|list|length }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Last Event</div>
+            <div class="stat-value" style="font-size:14px; padding-top:6px;">
+                {{ rows[0][2] if rows else '—' }}
+            </div>
+        </div>
+    </div>
+
+    <div class="table-wrap">
+        <div class="table-header">Event Log</div>
+        {% if rows %}
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Type</th>
+                    <th>Timestamp</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>
+                        <span class="badge badge-{{ row[1] }}">
+                            {% if row[1] == 'image' %}📷{% elif row[1] == 'audio' %}🎙{% endif %}
+                            {{ row[1] }}
+                        </span>
+                    </td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="empty">NO EVENTS RECORDED YET</div>
+        {% endif %}
+    </div>
+
+    <div class="refresh-note">AUTO-REFRESH EVERY 5 SECONDS</div>
+</div>
+</body>
+</html>

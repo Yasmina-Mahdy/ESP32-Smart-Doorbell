@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Database (contains live data, not needed in repo)
+*.db
+
+# ESP-IDF build artifacts
+esp_pir/build/
+esp_pir/managed_components/
+esp_pir/dependencies.lock
+
+# OS
+.DS_Store
+Thumbs.db
