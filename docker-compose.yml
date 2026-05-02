@@ -28,3 +28,5 @@ services:
       - mosquitto
     environment:
       - MQTT_BROKER=mosquitto
+    volumes:
+      - ./webserver/security.db:/app/security.db
