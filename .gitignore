@@ -14,3 +14,8 @@ esp_pir/dependencies.lock
 # OS
 .DS_Store
 Thumbs.db
+
+# Other
+webserver/test_mqtt.py
+.vscode/
+pir_mqtt/.devcontainer/
