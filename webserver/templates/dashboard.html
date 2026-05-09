@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Security Dashboard</title>
-    <meta http-equiv="refresh" content="1">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
@@ -26,15 +25,15 @@
     <div class="stats">
         <div class="stat-card">
             <div class="stat-label">Total Events</div>
-            <div class="stat-value">{{ rows|length }}</div>
+            <div class="stat-value" id="stat-total">{{ rows|length }}</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">PIR Triggers</div>
-            <div class="stat-value">{{ rows|selectattr(1, 'equalto', 'pir')|list|length }}</div>
+            <div class="stat-value" id="stat-pir">{{ rows|selectattr(1, 'equalto', 'pir')|list|length }}</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">Last Event</div>
-            <div class="stat-value" style="font-size:14px; padding-top:6px;">
+            <div class="stat-value" id="stat-last" style="font-size:14px; padding-top:6px;">
                 {{ rows[0][2] if rows else '—' }}
             </div>
         </div>
@@ -42,7 +41,6 @@
 
     <div class="table-wrap">
         <div class="table-header">Event Log</div>
-        {% if rows %}
         <table>
             <thead>
                 <tr>
@@ -52,7 +50,7 @@
                     <th>Details</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="event-tbody">
                 {% for row in rows %}
                 <tr>
                     <td>{{ row[0] }}</td>
@@ -63,17 +61,70 @@
                         </span>
                     </td>
                     <td>{{ row[2] }}</td>
-                    <td>{{ row[3] }}</td>
+                    <td>
+                        {% if row[1] == 'image' and row[4] %}
+                            <img src="/media/{{ row[4] }}" style="max-height:80px; border-radius:4px; cursor:pointer;"
+                                 onclick="this.style.maxHeight = this.style.maxHeight === 'none' ? '80px' : 'none'">
+                        {% elif row[1] == 'audio' and row[4] %}
+                            <audio controls style="height:30px; width:200px;">
+                                <source src="/media/{{ row[4] }}" type="audio/wav">
+                            </audio>
+                        {% else %}
+                            {{ row[3] }}
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        {% else %}
+        {% if not rows %}
         <div class="empty">NO EVENTS RECORDED YET</div>
         {% endif %}
     </div>
 
-    <div class="refresh-note">AUTO-REFRESH EVERY 5 SECONDS</div>
+    <div class="refresh-note">LIVE UPDATES VIA WEBSOCKET</div>
 </div>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script>
+    const socket = io();
+
+    let totalEvents = parseInt(document.getElementById('stat-total').innerText) || 0;
+    let pirEvents = parseInt(document.getElementById('stat-pir').innerText) || 0;
+
+    socket.on('new_event', function(event) {
+        // Update stats
+        totalEvents++;
+        document.getElementById('stat-total').innerText = totalEvents;
+        if (event.event_type === 'pir') {
+            pirEvents++;
+            document.getElementById('stat-pir').innerText = pirEvents;
+        }
+        document.getElementById('stat-last').innerText = event.timestamp;
+
+        // Build details cell
+        let details = '';
+        if (event.event_type === 'image' && event.file_path) {
+            details = `<img src="/media/${event.file_path}" style="max-height:80px; border-radius:4px; cursor:pointer;"
+                            onclick="this.style.maxHeight = this.style.maxHeight === 'none' ? '80px' : 'none'">`;
+        } else if (event.event_type === 'audio' && event.file_path) {
+            details = `<audio controls style="height:30px; width:200px;">
+                           <source src="/media/${event.file_path}" type="audio/wav">
+                       </audio>`;
+        } else {
+            details = event.data;
+        }
+
+        // Build badge
+        let icon = event.event_type === 'image' ? '📷' : event.event_type === 'audio' ? '🎙' : '';
+        let badge = `<span class="badge badge-${event.event_type}">${icon} ${event.event_type}</span>`;
+
+        // Prepend row
+        const tbody = document.getElementById('event-tbody');
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${event.id}</td><td>${badge}</td><td>${event.timestamp}</td><td>${details}</td>`;
+        tbody.insertBefore(tr, tbody.firstChild);
+    });
+</script>
 </body>
 </html>

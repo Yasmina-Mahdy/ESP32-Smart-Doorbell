@@ -28,5 +28,6 @@ services:
       - mosquitto
     environment:
       - MQTT_BROKER=mosquitto
+      - TZ=Africa/Cairo
     volumes:
       - ./webserver/security.db:/app/security.db
