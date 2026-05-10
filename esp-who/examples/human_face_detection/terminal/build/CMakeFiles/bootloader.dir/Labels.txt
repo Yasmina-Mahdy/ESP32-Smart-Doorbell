@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/CMakeFiles/bootloader
+C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/CMakeFiles/bootloader.rule
+C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/CMakeFiles/bootloader-complete.rule
+C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
