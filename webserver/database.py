@@ -1,7 +1,6 @@
 import sqlite3
 
-DB_PATH = "security.db"
-
+DB_PATH = "/app/data/security.db"
 
 def init_db():
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
