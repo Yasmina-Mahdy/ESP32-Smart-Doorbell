@@ -1,0 +1,2 @@
+source C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/gdbinit/symbols
+source C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/gdbinit/connect

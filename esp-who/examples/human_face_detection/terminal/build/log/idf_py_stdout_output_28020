@@ -1,0 +1,50 @@
+[0;32mI (513) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (522) cpu_start: Pro cpu start user code[0m
+[0;32mI (522) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (522) app_init: Application information:[0m
+[0;32mI (522) app_init: Project name:     human_face_detection_terminal[0m
+[0;32mI (523) app_init: App version:      v1.1.0-dirty[0m
+[0;32mI (523) app_init: Compile time:     May 10 2026 14:59:35[0m
+[0;32mI (523) app_init: ELF file SHA256:  4c21f3829...[0m
+[0;32mI (523) app_init: ESP-IDF:          v5.4.4[0m
+[0;32mI (523) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (524) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (524) efuse_init: Chip rev:         v0.1[0m
+[0;32mI (524) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (524) heap_init: At 3FC9DD00 len 0004BA10 (302 KiB): RAM[0m
+[0;32mI (524) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (525) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (525) esp_psram: Adding pool of 7296K of PSRAM memory to heap allocator[0m
+[0;32mI (525) esp_psram: Adding pool of 43K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (526) spi_flash: detected chip: gd[0m
+[0;32mI (526) spi_flash: flash io: qio[0m
+[0;32mI (530) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (530) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (531) main_task: Started on CPU0[0m
+[0;32mI (541) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (541) main_task: Calling app_main()[0m
+[0;32mI (541) who_camera: Scanning I2C bus...[0m
+[0;32mI (551) who_camera:   Found device at 0x36[0m
+[1;31mE (561) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;32mI (1101) who_camera: AXP313A camera power enabled[0m
+[0;32mI (1101) who_camera: Post-power scan:[0m
+[0;32mI (1101) who_camera:   Found: 0x36[0m
+[1;31mE (1111) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;32mI (1161) who_camera: Camera module is FireBeetle2-S3[0m
+[0;32mI (1161) s3 ll_cam: DMA Channel=0[0m
+[0;32mI (1161) cam_hal: cam init ok[0m
+[0;32mI (1161) sccb-ng: pin_sda 1 pin_scl 2[0m
+[0;32mI (1161) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (1171) camera: Camera PID=0x26 VER=0x42 MIDL=0x7f MIDH=0xa2[0m
+[0;32mI (1171) camera: Detected OV2640 camera[0m
+[0;32mI (1171) camera: Detected camera at address=0x30[0m
+[0;32mI (1241) cam_hal: PSRAM DMA mode enabled[0m
+[0;32mI (1241) s3 ll_cam: node_size: 3840, nodes_per_line: 1, lines_per_node: 6[0m
+[0;32mI (1241) s3 ll_cam: dma_half_buffer_min:  3840, dma_half_buffer: 15360, lines_per_half_buffer: 24, dma_buffer_size: 153600[0m
+[0;32mI (1241) cam_hal: buffer_size: 153600, half_buffer_size: 15360, node_buffer_size: 3840, node_cnt: 40, total_cnt: 11[0m
+[0;32mI (1241) cam_hal: Allocating 168976 Byte frame buffer in PSRAM[0m
+[0;32mI (1241) cam_hal: Frame[0]: Offset: 16, Addr: 0x3C0E0910[0m
+[0;32mI (1241) cam_hal: cam config ok[0m
+[0;32mI (1241) ov2640: Set PLL: clk_2x: 1, clk_div: 3, pclk_auto: 1, pclk_div: 8[0m
+[0;32mI (1301) who_camera: Camera init success![0m
+[0;32mI (1311) main_task: Returned from app_main()[0m
