@@ -1,0 +1,58 @@
+[0;32mI (519) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (527) cpu_start: Pro cpu start user code[0m
+[0;32mI (527) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (527) app_init: Application information:[0m
+[0;32mI (527) app_init: Project name:     human_face_detection_terminal[0m
+[0;32mI (528) app_init: App version:      v1.1.0-dirty[0m
+[0;32mI (528) app_init: Compile time:     May 10 2026 14:59:35[0m
+[0;32mI (528) app_init: ELF file SHA256:  dc2bacbec...[0m
+[0;32mI (528) app_init: ESP-IDF:          v5.4.4[0m
+[0;32mI (528) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (528) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (529) efuse_init: Chip rev:         v0.1[0m
+[0;32mI (529) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (529) heap_init: At 3FC9DD00 len 0004BA10 (302 KiB): RAM[0m
+[0;32mI (529) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (529) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (530) esp_psram: Adding pool of 7296K of PSRAM memory to heap allocator[0m
+[0;32mI (530) esp_psram: Adding pool of 43K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator[0m
+[0;32mI (531) spi_flash: detected chip: gd[0m
+[0;32mI (531) spi_flash: flash io: qio[0m
+[0;32mI (535) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (535) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (536) main_task: Started on CPU0[0m
+[0;32mI (546) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (546) main_task: Calling app_main()[0m
+[0;32mI (546) who_camera: Scanning I2C bus...[0m
+[0;32mI (556) who_camera:   Found device at 0x36[0m
+[1;31mE (566) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;32mI (1106) who_camera: AXP313A camera power enabled[0m
+[0;32mI (1106) who_camera: Post-power scan:[0m
+[0;32mI (1106) who_camera:   Found: 0x36[0m
+[1;31mE (1116) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;32mI (1166) who_camera: Camera module is FireBeetle2-S3[0m
+[0;32mI (1166) s3 ll_cam: DMA Channel=0[0m
+[0;32mI (1166) cam_hal: cam init ok[0m
+[0;32mI (1166) sccb-ng: pin_sda 1 pin_scl 2[0m
+[0;32mI (1166) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (1176) camera: Camera PID=0x26 VER=0x42 MIDL=0x7f MIDH=0xa2[0m
+[0;32mI (1176) camera: Detected OV2640 camera[0m
+[0;32mI (1176) camera: Detected camera at address=0x30[0m
+[0;32mI (1246) cam_hal: PSRAM DMA mode enabled[0m
+[0;32mI (1246) s3 ll_cam: node_size: 3840, nodes_per_line: 1, lines_per_node: 8[0m
+[0;32mI (1246) s3 ll_cam: dma_half_buffer_min:  3840, dma_half_buffer: 11520, lines_per_half_buffer: 24, dma_buffer_size: 115200[0m
+[0;32mI (1246) cam_hal: buffer_size: 115200, half_buffer_size: 11520, node_buffer_size: 3840, node_cnt: 30, total_cnt: 11[0m
+[0;32mI (1246) cam_hal: Allocating 126736 Byte frame buffer in PSRAM[0m
+[0;32mI (1246) cam_hal: Frame[0]: Offset: 16, Addr: 0x3C0E0910[0m
+[0;32mI (1246) cam_hal: cam config ok[0m
+[0;32mI (1246) ov2640: Set PLL: clk_2x: 1, clk_div: 3, pclk_auto: 1, pclk_div: 8[0m
+[0;32mI (1306) who_camera: Camera init success![0m
+[0;32mI (1316) main_task: Returned from app_main()[0m
+[0;32mI (47606) detection_result: [ 0]: ( 60,   7, 187, 160)[0m
+[0;32mI (47606) detection_result:       left eye: ( 92,  65), right eye: (143,  65), nose: (116,  95), mouth left: (100, 112), mouth right: (138, 113)[0m
+[0;32mI (56396) detection_result: [ 0]: ( 63,  49, 214, 243)[0m
+[0;32mI (56396) detection_result:       left eye: ( 96, 125), right eye: (160, 123), nose: (128, 165), mouth left: (103, 192), mouth right: (159, 189)[0m
+[0;32mI (56556) detection_result: [ 0]: ( 62,  49, 208, 246)[0m
+[0;32mI (56556) detection_result:       left eye: ( 94, 125), right eye: (158, 121), nose: (127, 165), mouth left: (102, 197), mouth right: (159, 193)[0m
+[0;32mI (56716) detection_result: [ 0]: ( 60,  50, 201, 241)[0m
+[0;32mI (56716) detection_result:       left eye: ( 94, 127), right eye: (159, 125), nose: (126, 168), mouth left: (104, 197), mouth right: (154, 194)[0m

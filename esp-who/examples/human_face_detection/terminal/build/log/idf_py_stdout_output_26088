@@ -1,0 +1,17 @@
+[1/9] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\esp-projects\ESP32-Smart-Doorbell\esp-who\examples\human_face_detection\terminal\build\bootloader\esp-idf\esptool_py && C:\Espressif\tools\python\v5.4.4\venv\Scripts\python.exe C:/esp/.espressif/v5.4.4/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/bootloader/bootloader.bin"
+Bootloader binary size 0x5760 bytes. 0x28a0 bytes (32%) free.
+[2/9] No install step for 'bootloader'
+[3/9] Completed 'bootloader'
+[4/9] Building CXX object esp-idf/main/CMakeFiles/__idf_main.dir/app_main.cpp.obj
+[5/9] Linking C static library esp-idf\main\libmain.a
+[6/9] Generating ld/sections.ld
+[7/9] Linking CXX executable human_face_detection_terminal.elf
+[8/9] Generating binary image from built executable
+esptool.py v4.11.0
+Creating esp32s3 image...
+Merged 2 ELF sections
+Successfully created esp32s3 image.
+Generated C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/human_face_detection_terminal.bin
+[9/9] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\esp-projects\ESP32-Smart-Doorbell\esp-who\examples\human_face_detection\terminal\build\esp-idf\esptool_py && C:\Espressif\tools\python\v5.4.4\venv\Scripts\python.exe C:/esp/.espressif/v5.4.4/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/partition_table/partition-table.bin C:/esp-projects/ESP32-Smart-Doorbell/esp-who/examples/human_face_detection/terminal/build/human_face_detection_terminal.bin"
+human_face_detection_terminal.bin binary size 0xe88a0 bytes. Smallest app partition is 0x3c0000 bytes. 0x2d7760 bytes (76%) free.
